@@ -28,10 +28,31 @@
     color: var(--secondaryColor);
     z-index: 10;
 }
+
 .heading {
     font-size: calc(2vw + 2vh + 2vmin);
     position: relative;
     z-index: 10;
+}
+
+.wrapper {
+    top: 0;
+    left: 0;
+    height: 100%;
+    min-width: 100%;
+    min-height: 100%;
+    background-size: contain;
+}
+
+.panel {
+	background-repeat: no-repeat; 
+	position: relative;
+    background-size: contain;
+    height: 100%;
+	width: 100%;
+}
+.panel.parallax {
+	position: fixed;
 }
 
 /* Visualizer Section */
@@ -59,7 +80,20 @@
 
 .menu {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
+    height: 3rem;
+}
+
+.menu-dropdown {
+    display: flex;
+    justify-content:end;
+    align-items: center;
+    gap: 1rem;
+}
+
+.hourglass {
+    max-width: 90%;
+    max-height: 90%;
 }
 
 #dropdown-basic-button {
@@ -68,7 +102,7 @@
     border: none;
     padding: .5rem 1rem;
     transition-duration: 0.4s;
-    width:11rem;
+    width:10rem;
     max-width:100%;
 }
 
@@ -84,30 +118,7 @@
     transition-duration: .3s !important;
 }
 
-.animation {
-    top: 0;
-    left: 0;
-    height: 100%;
-    min-width: 100%;
-    min-height: 100%;
-    background-size: contain;
-}
-
-.animation_layer {
-	/* background-position: bottom center;  */
-	background-repeat: no-repeat; 
-	position: relative;
-    background-size: contain;
-    overflow-y: visible;
-    height: 100%;
-	width: 100%;
-    min-width: 100%;
-    min-height: 100%;
-    position:relative;
-}
-.animation_layer.parallax {
-	position: fixed;
-}
+/* Panel Images */
 
 #back-4 {
     background-image: url(./images/Back4.png);
