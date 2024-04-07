@@ -18,7 +18,7 @@ function App() {
     if(selectedOption){
       try{
         axios.defaults.withCredentials = true;
-        const res = await axios.post('http://127.0.0.1:8000/generate_plot', {
+        const res = await axios.post('http://datahacks-env.eba-vzuveek2.us-west-1.elasticbeanstalk.com/generate_plot', {
             category:selectedOption
         });
         setPlot(res.data.plot)

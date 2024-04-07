@@ -14,9 +14,9 @@ CORS(app, supports_credentials=True)
 
 app.config['CLEAN_DF'] = getDF()
 
-# @app.route('/')
-# def index():
-#     return 'Welcome to the Flask backend!'
+@app.route('/')
+def index():
+    return 'Welcome to the backend!'
 
 @app.route('/generate_plot', methods=['POST'])
 def generate_plot():
