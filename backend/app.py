@@ -19,6 +19,14 @@ api_v1_cors_config = (
 app.config['CLEAN_DF'] = getDF()
 app.config['CORS_HEADERS']='Content-Type'
 
+# Enable CORS for all routes
+@app.after_request
+def after_request(response):
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
+    response.headers.add('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS')
+    return response
+
 def application(environ, start_response):
   if environ['REQUEST_METHOD'] == 'OPTIONS':
     start_response(
