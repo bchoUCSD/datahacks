@@ -15,6 +15,19 @@ CORS(app, supports_credentials=True)
 app.config['CLEAN_DF'] = getDF()
 app.config['CORS_HEADERS']='Content-Type'
 
+def application(environ, start_response):
+  if environ['REQUEST_METHOD'] == 'OPTIONS':
+    start_response(
+      '200 OK',
+      [
+        ('Content-Type', 'application/json'),
+        ('Access-Control-Allow-Origin', '*'),
+        ('Access-Control-Allow-Headers', 'Authorization, Content-Type'),
+        ('Access-Control-Allow-Methods', 'POST'),
+      ]
+    )
+    return ''
+
 @app.route('/')
 def index():
     return 'Welcome to the backend!'
