@@ -1,47 +1,53 @@
 import React from 'react';
 import Dropdown from 'react-bootstrap/Dropdown';
+import DropdownButton from 'react-bootstrap/DropdownButton';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import axios from 'axios';
 
 function App() {
-  const [counter, setCounter] = React.useState(0)
-  const [input, setInput] = React.useState("")
+  const [plot, setPlot] = React.useState('')
   const [selectedOption, setSelectedOption] = React.useState(null);
-  
-  function incrementClick(){
-    setCounter(prev => {return prev + 1})
-  }
-
-  function decrementClick(){
-    setCounter(prev => {return prev - 1})
-  }
-
 
   const handleOptionSelect = (option) => {
     setSelectedOption(option);
   };
 
+  async function handlePost(){
+    if(selectedOption){
+      try{
+        axios.defaults.withCredentials = true;
+        const res = await axios.post('http://127.0.0.1:8000/generate_plot', {
+            category:selectedOption
+        });
+        setPlot(res.data.plot)
+        console.log("plot is",plot)
+      }
+      catch (err){
+        console.log('Error:', err)
+      }
+    }
+    else{
+      alert('Choose a period')
+    } 
+  }
   
   return (
     <div className="App">
       <header className="App-header">
         <h1>This is our front end of the app</h1>
-        <button onClick={incrementClick}>Increment</button>
-        <button onClick={decrementClick}>Decrement</button>
-        <h1>{counter}</h1>
-        <input onChange={e => setInput(e.target.value)}></input>
-        <h1>User Types:{input}</h1>
+        <DropdownButton id="dropdown-basic-button" title={selectedOption? selectedOption:'Choose one' }>
+          <Dropdown.Item onClick={() => handleOptionSelect('Early Jurassic')}>Early Jurassic</Dropdown.Item>
+          <Dropdown.Item onClick={() => handleOptionSelect('Mid Jurassic')}>Mid Jurassic</Dropdown.Item>
+          <Dropdown.Item onClick={() => handleOptionSelect('Late Jurassic')}>Late Jurassic</Dropdown.Item>
+          <Dropdown.Item onClick={() => handleOptionSelect('Early Cretaceous')}>Early Cretaceous</Dropdown.Item>
+          <Dropdown.Item onClick={() => handleOptionSelect('Late Cretaceous')}>Late Cretaceous</Dropdown.Item>
+          <Dropdown.Item onClick={() => handleOptionSelect('Late Triassic')}>Late Triassic</Dropdown.Item>
+        </DropdownButton>
 
-        <Dropdown>
-          <Dropdown.Toggle variant="success" id="dropdown-basic">
-          {selectedOption ? selectedOption : 'Select an option'}
-          </Dropdown.Toggle>
+        <button onClick={handlePost}>Make POST request</button>
+        {plot && <img src={`data:image/png;base64,${plot}`} alt="Plot" />}
 
-          <Dropdown.Menu>
-            <Dropdown.Item onClick={() => handleOptionSelect('1')}>1</Dropdown.Item>
-            <Dropdown.Item onClick={() => handleOptionSelect('2')}>2</Dropdown.Item>
-            <Dropdown.Item onClick={() => handleOptionSelect('3')}>3</Dropdown.Item>
-          </Dropdown.Menu>
-        </Dropdown>
+
 
       </header>
     </div>
