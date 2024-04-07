@@ -37,7 +37,7 @@ function App() {
   return (
     <div className="App">
       <section className="flex-container">
-          <Parallax pages={2} class="animation">
+          <Parallax pages={2.5} class="animation">
             <ParallaxLayer offset={0} className="animation_layer parallax"></ParallaxLayer>
             <ParallaxLayer speed={.05} offset={0} style={{ height: "auto" }}>
                 <div className="animation_layer parallax" id="back-4"></div>
@@ -51,12 +51,10 @@ function App() {
             <ParallaxLayer speed={.3} offset={0} sticky={{ start: 0, end: .2 }} className="title">
               <h1 className="heading">T-Race</h1>
             </ParallaxLayer>
-            <ParallaxLayer speed={.4} offset={0.15} style={{ height: "auto" }}>
-                <div className='img-container'>
+            <ParallaxLayer speed={.4} offset={0.2} style={{ height: "auto" }}>
                   <div className="animation_layer parallax" id="front-1"></div>
-                </div>
             </ParallaxLayer>
-            <ParallaxLayer speed={.4} offset={1} style={{ height: "auto" }}>
+            <ParallaxLayer speed={.4} offset={1} factor={2}>
               <div className='visualizer'> 
                 <div className='vis-container'>
                   <h2 className='prompt'>Visualize how dinosaurs changed over time.</h2>
