@@ -13,6 +13,7 @@ app = Flask(__name__)
 CORS(app, supports_credentials=True)
 
 app.config['CLEAN_DF'] = getDF()
+app.config['CORS_HEADERS']='Content-Type'
 
 @app.route('/')
 def index():
