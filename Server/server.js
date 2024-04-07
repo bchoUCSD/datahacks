@@ -1,5 +1,5 @@
 // Import dependencies
-import express from 'express';
+const express = require('express'); 
 
 // Set up express server
 const app = express();
