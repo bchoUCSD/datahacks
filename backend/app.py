@@ -1,3 +1,5 @@
+# app.py
+
 from flask import Flask, request, jsonify
 import matplotlib.pyplot as plt
 import matplotlib
@@ -8,27 +10,16 @@ import base64
 from cleaning import *
 from flask_cors import CORS, cross_origin
 
-
 app = Flask(__name__)
 CORS(app, supports_credentials=True)
 
 app.config['CLEAN_DF'] = getDF()
-app.config['CORS_HEADERS']='Content-Type'
-
-# Enable CORS for all routes
-@app.after_request
-def after_request(response):
-    response.headers.add('Access-Control-Allow-Origin', '*')
-    response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
-    response.headers.add('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS')
-    return response
 
 @app.route('/')
 def index():
-    return 'Welcome to the backend!'
+    return 'Welcome to the Flask backend!'
 
 @app.route('/generate_plot', methods=['POST'])
-@cross_origin()
 def generate_plot():
     # Get data from frontend
     json = request.json
@@ -49,6 +40,10 @@ def generate_plot():
     plt.close()
     # Return the plot as response
     return jsonify({'plot': plot_base64})
+
+@app.route('/test_get', methods=['GET'])
+def test_get():
+    return jsonify({'message': 'This is a GET endpoint'})
 
 if __name__ == '__main__':
     app.run(port=8000,debug=True)
