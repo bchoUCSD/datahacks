@@ -12,6 +12,10 @@ from flask_cors import CORS, cross_origin
 app = Flask(__name__)
 CORS(app, supports_credentials=True)
 
+api_v1_cors_config = (
+    "origins": ["https://frontend-qvy22s8kt-bryan-chos-projects.vercel.app/","https://vercel.com/bryan-chos-projects/frontend/AkkuNfWqbHynRgFRB3P2jqB86i8v"]
+)
+
 app.config['CLEAN_DF'] = getDF()
 app.config['CORS_HEADERS']='Content-Type'
 
