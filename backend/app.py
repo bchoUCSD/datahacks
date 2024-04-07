@@ -2,6 +2,8 @@
 
 from flask import Flask, request, jsonify
 import matplotlib.pyplot as plt
+import matplotlib
+matplotlib.use('agg') 
 import io
 import pandas as pd
 import base64
@@ -11,7 +13,6 @@ from flask_cors import CORS, cross_origin
 app = Flask(__name__)
 CORS(app, supports_credentials=True)
 
-
 @app.route('/')
 def index():
     return 'Welcome to the Flask backend!'
@@ -19,7 +20,9 @@ def index():
 @app.route('/generate_plot', methods=['POST'])
 def generate_plot():
     # Get data from frontend
-    data = request.json
+    json = request.json
+    # expecting the data to come in with category tag
+    category = json.get('category')
 
     # Process data (you can use Pandas for data manipulation)
     df = pd.DataFrame({'dataValue': [17.0, 25.0], 'Column2': [1,2]}, index=['Portland', 'Berkeley'])
