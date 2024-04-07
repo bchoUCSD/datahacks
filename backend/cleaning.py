@@ -1,6 +1,5 @@
 import pandas as pd
 import numpy as np
-import os
 import matplotlib.pyplot as plt
 
 def get_period_name (period_str):
@@ -49,3 +48,16 @@ def getDF():
     return cleaned_df 
     # dino_length_df = cleaned_df.groupby(['period_name', "length"]).count().get(['name'])
     # return dino_length_df
+
+
+def plot_dino_len (time_period_name, cleaned_df):
+    ec_dino_length_df = cleaned_df[cleaned_df['period_name'].str.contains(time_period_name)]
+
+    bin = np.arange(0,max(ec_dino_length_df["len_as_int"]) + 5, 5)
+    plt.figure(figsize=(10, 5),dpi=200)
+    dino_counts, dino_edges, dino_bars = plt.hist(ec_dino_length_df["len_as_int"], bins=bin, ec = 'w',)
+    plt.bar_label(dino_bars)
+
+    plt.xlabel('Length (Meters)')
+    plt.ylabel('Count of Dinos')
+    plt.title('Distribution of Dinosaur Lengths in ' + time_period_name)
