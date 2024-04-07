@@ -1,0 +1,129 @@
+/* Import font */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --primaryColor: #344e41;
+    --secondaryColor: #dcd8cc;
+    background-color: var(--secondaryColor);
+}
+
+/* Heading & Body */
+
+.flex-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* flex-direction: column; */
+
+}
+
+.title {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    text-shadow: 3px 1px #423b36;
+}
+.heading {
+    color: var(--secondaryColor);
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: calc(2vw + 2vh + 2vmin);
+}
+
+/* Visualizer Section */
+
+.visualizer {
+    background-color: #344e41;
+    color: var(--secondaryColor);
+    height: 100%;
+  }
+  
+.vis-container {
+    display:flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 3rem;
+    padding-top: 5rem;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.prompt {
+    text-align: center;
+    font-size: calc(1vw + 1vh + 2vmin);
+}
+
+.menu {
+    display: flex;
+    justify-content: space-around;
+}
+
+#dropdown-basic-button {
+    background-color: var(--secondaryColor);
+    color: var(--primaryColor);
+    border: none;
+    padding: .5rem 1rem;
+    transition-duration: 0.4s;
+    width:11rem;
+    max-width:100%;
+}
+
+.btn-success {
+    background-color: #588157 !important;
+    color: var(--secondaryColor) !important;
+    border: none !important; 
+    padding: .5rem 1rem !important;
+}
+
+.btn-success:hover {
+    background-color: #3a5a40 !important;
+    transition-duration: .3s !important;
+}
+
+.animation {
+    top: 0;
+    left: 0;
+    height: 100%;
+    min-width: 100%;
+    min-height: 100%;
+    background-size: cover;
+}
+
+.animation_layer {
+	/* background-position: bottom center;  */
+	background-repeat: repeat-x; 
+	position: absolute;
+    background-size: cover;
+    overflow-y: visible;
+    height: 100%;
+	width: 100%;
+    min-width: 100%;
+    min-height: 100%;
+}
+.animation_layer.parallax {
+	position: fixed;
+}
+
+
+
+#back-4 {
+    background-image: url(./images/Back4.png);
+}
+
+#mid-3 {
+    background-image: url(./images/Mid3.png);
+}
+
+#mid-2 {
+    background-image: url(./images/Mid2.png);
+}
+
+#front-1 {
+    background-image: url(./images/Front1.png);
+}
