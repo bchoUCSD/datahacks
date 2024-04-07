@@ -17,11 +17,9 @@ def index():
     return 'Welcome to the Flask backend!'
 
 @app.route('/generate_plot', methods=['POST'])
-@cross_origin() 
 def generate_plot():
     # Get data from frontend
     data = request.json
-    return jsonify({'plot': 1})
 
     # Process data (you can use Pandas for data manipulation)
     df = pd.DataFrame({'dataValue': [17.0, 25.0], 'Column2': [1,2]}, index=['Portland', 'Berkeley'])
@@ -39,11 +37,11 @@ def generate_plot():
     plot_base64 = base64.b64encode(buffer.read()).decode('utf-8')
     plt.close()
     # Return the plot as response
+    return jsonify({'plot': plot_base64})
 
-@app.route('/test',method=['GET'])
-@cross_origin()
-def returnTest():
-    return jsonify({'data':1})
+@app.route('/test_get', methods=['GET'])
+def test_get():
+    return jsonify({'message': 'This is a GET endpoint'})
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(port=8000,debug=True)
