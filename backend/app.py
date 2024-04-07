@@ -32,6 +32,7 @@ def index():
     return 'Welcome to the backend!'
 
 @app.route('/generate_plot', methods=['POST'])
+@cross_origin()
 def generate_plot():
     # Get data from frontend
     json = request.json
