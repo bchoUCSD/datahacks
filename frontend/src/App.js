@@ -5,7 +5,8 @@ import DropdownButton from 'react-bootstrap/DropdownButton';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
 import { Parallax, ParallaxLayer } from '@react-spring/parallax';
-import hourglass from './images/hourglass.png'
+import hourglass from './assets/hourglass.png'
+import bcr from './assets/dinosaur_race.mp4';
 
 function App() {
   const [plot, setPlot] = React.useState('')
@@ -40,7 +41,7 @@ function App() {
       
       <section className="flex-container">
     
-        <Parallax pages={2.5} class="wrapper">
+        <Parallax pages={3.5} class="wrapper">
           <ParallaxLayer offset={0} className="panel parallax"></ParallaxLayer>
           <ParallaxLayer speed={.05} offset={0} style={{ height: "auto" }}>
               <div className="panel parallax" id="back-4"></div>
@@ -51,13 +52,13 @@ function App() {
           <ParallaxLayer speed={.3} offset={0} sticky={{ start: 0, end: .2 }} className="title" style={{ zIndex: 5, position:"absolute"  }}>
             <h1 className="heading">T-Race</h1>
           </ParallaxLayer>
-          <ParallaxLayer speed={.2} offset={0}style={{ height: "auto", zIndex: 10, position:"absolute" }}>
+          <ParallaxLayer speed={.2} offset={0}style={{ height: "auto" }}>
               <div className="panel parallax" id="mid-2"></div>
           </ParallaxLayer>
-          <ParallaxLayer speed={.2} offset={0} style={{ height: "auto", zIndex: 10, position:"absolute" }}>
+          <ParallaxLayer speed={.2} offset={0} style={{ height: "auto" }}>
                 <div className="panel parallax" id="front-1"></div>
           </ParallaxLayer>
-          <ParallaxLayer speed={.2} offset={1}>
+          <ParallaxLayer speed={.2} offset={1} factor={2.5}>
             <div className='visualizer'> 
               <div className='vis-container'>
                 <h2 className='prompt'>Visualize how dinosaurs changed over time.</h2>
@@ -76,7 +77,9 @@ function App() {
                   <button class="btn btn-success" onClick={handlePost}>Start Race</button> 
                 </div>
                 {plot && <img src={`data:image/png;base64,${plot}`} alt="Plot" />}
-                <video src='../../dinosaur_race.mp4'></video>
+                <video autoPlay loop muted>
+                  <source src={bcr} type='video/mp4'/>
+                </video>
               </div> 
             </div>
           </ParallaxLayer>

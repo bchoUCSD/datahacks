@@ -60,7 +60,8 @@
 .visualizer {
     background-color: #344e41;
     color: var(--secondaryColor);
-    height: 100%;
+    height: auto;
+    z-index: 100;
   }
   
 .vis-container {
@@ -119,21 +120,21 @@
 }
 
 #back-4 {
-    background-image: url(./images/Back4.png);
+    background-image: url(./assets/Back4.png);
     z-index: 1;
 }
 
 #mid-3 {
-    background-image: url(./images/Mid3.png);
+    background-image: url(./assets/Mid3.png);
     z-index: 1;
 }
 
 #mid-2 {
-    background-image: url(./images/Mid2.png);
+    background-image: url(./assets/Mid2.png);
     z-index: 50;
 }
 
 #front-1 {
-    background-image: url(./images/Front1.png);
+    background-image: url(./assets/Front1.png);
     z-index: 50;
 }
