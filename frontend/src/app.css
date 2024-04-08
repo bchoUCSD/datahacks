@@ -7,7 +7,8 @@
 :root {
     --primaryColor: #344e41;
     --secondaryColor: #dcd8cc;
-    background-color: var(--secondaryColor);
+    background-color: var(--primaryColor);
+    overflow-y: hidden; /* Hide vertical scrollbar */
 }
 
 /* Heading & Body */
@@ -24,14 +25,34 @@
     align-items: center;
     justify-content: center;
     text-shadow: 3px 1px #423b36;
-    position: relative;
     color: var(--secondaryColor);
-    z-index: 10;
+    z-index: 5;
 }
 .heading {
     font-size: calc(2vw + 2vh + 2vmin);
-    position: relative;
-    z-index: 10;
+    position: absolute;
+    z-index: 5;
+}
+
+.wrapper {
+    top: 0;
+    left: 0;
+    height: 100%;
+    background-size: contain;
+    position: absolute;
+}
+
+.panel {
+    height: 100%;
+	width: 100%;
+	background-repeat: no-repeat; 
+	position: absolute;
+    background-size: contain;
+    overflow-y: visible;
+}
+
+.panel.parallax {
+	position: absolute;
 }
 
 /* Visualizer Section */
@@ -47,7 +68,7 @@
     justify-content: center;
     flex-direction: column;
     gap: 3rem;
-    padding-top: 5rem;
+    padding-top: 4rem;
     width: 80%;
     margin: 0 auto;
 }
@@ -59,7 +80,20 @@
 
 .menu {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
+    height: 3rem;
+}
+
+.menu-dropdown {
+    display: flex;
+    justify-content:end;
+    align-items: center;
+    gap: 1rem;
+}
+
+.hourglass {
+    max-width: 90%;
+    max-height: 90%;
 }
 
 #dropdown-basic-button {
@@ -84,31 +118,6 @@
     transition-duration: .3s !important;
 }
 
-.animation {
-    top: 0;
-    left: 0;
-    height: 100%;
-    min-width: 100%;
-    min-height: 100%;
-    background-size: contain;
-}
-
-.animation_layer {
-	/* background-position: bottom center;  */
-	background-repeat: no-repeat; 
-	position: relative;
-    background-size: contain;
-    overflow-y: visible;
-    height: 100%;
-	width: 100%;
-    min-width: 100%;
-    min-height: 100%;
-    position:relative;
-}
-.animation_layer.parallax {
-	position: fixed;
-}
-
 #back-4 {
     background-image: url(./images/Back4.png);
     z-index: 1;
@@ -121,10 +130,10 @@
 
 #mid-2 {
     background-image: url(./images/Mid2.png);
-    z-index: 20;
+    z-index: 50;
 }
 
 #front-1 {
     background-image: url(./images/Front1.png);
-    z-index: 20;
+    z-index: 50;
 }
